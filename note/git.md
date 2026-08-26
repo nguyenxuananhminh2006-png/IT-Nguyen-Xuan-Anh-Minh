@@ -1,69 +1,140 @@
-# Git
-## 1. Git là gì?
-Git (Version Control - quản lý phiên bản) là hệ thống theo dõi và quản lý thay đổi của dự án.
-**Repository (repo)** = kho lưu trữ được Git quản lý.
-**GitHub** = nền tảng trực tuyến để lưu trữ và chia sẻ Repository.
-## 2. Quy trình cơ bản
+# ⭐ Git — Highlight Day 0
+
+## 1. Bản chất Git
+
+**Git** = Version Control (quản lý phiên bản).
+
+Git giúp theo dõi thay đổi và lưu lại lịch sử các phiên bản của dự án.
+
+**Repository** = kho được Git quản lý.
+
+`.git` = nơi Git lưu dữ liệu quản lý Repository.
+
+---
+
+## 2. Quy trình quan trọng nhất
+
 ```text
-Tạo / sửa file
-    ↓
-git add
-    ↓
-Staged (vùng chuẩn bị)
-    ↓
-git commit
-    ↓
-Commit (phiên bản được ghi nhận)
-```
-## 3. Các lệnh đã học
-```bash
-git --version
-```
-→ Kiểm tra phiên bản Git.
-```bash
-git init
-```
-→ Khởi tạo Repository.
-```bash
+Sửa / tạo file
+      ↓
 git status
+      ↓
+git add
+      ↓
+Staging Area
+      ↓
+git commit
+      ↓
+Commit (phiên bản)
+      ↓
+git push
+      ↓
+GitHub
 ```
-→ Xem trạng thái Repository.
-```bash
-git add <file>
+
+### Nhớ:
+
+* `status` → xem Git đang thấy gì.
+* `add` → đưa thay đổi vào vùng chuẩn bị.
+* `commit` → tạo phiên bản chính thức.
+* `push` → đưa Commit lên GitHub.
+
+---
+
+## 3. Local và Remote
+
+```text
+Local Repository
+      │
+      │ git push
+      ↓
+Remote Repository
+(GitHub)
 ```
-→ Đưa file vào Staging Area.
-```bash
-git commit -m "noi dung"
-`
-→ Ghi nhận phiên bản.
-```bash
-git config --global user.name "Ten"
-git config --global user.email "Email"
+
+* **Local** = Repository trên máy.
+* **Remote** = Repository ở nơi khác.
+* `origin` = tên mặc định của Remote.
+* `master` = Branch hiện tại.
+* `origin/master` = Branch `master` trên Remote.
+
+---
+
+## 4. Commit
+
+Mỗi Commit có:
+
+* **Commit ID** → mã định danh phiên bản.
+* **Author** → người tạo Commit.
+* **Date** → thời gian tạo.
+* **Message** → mô tả thay đổi.
+
+Ví dụ:
+
+```text
+a299930 Add gitignore
 ```
 
-→ Cấu hình tên và email cho Git.
+---
 
-## 4. Thuật ngữ cần nhớ
+## 5. Kiểm tra lịch sử
 
-* **Working Directory** = thư mục đang làm việc.
-* **Untracked** = chưa được Git theo dõi.
-* **Staged** = đã đưa vào vùng chuẩn bị Commit.
-* **Commit** = phiên bản đã được ghi nhận.
-* **Local** = trên máy tính.
-* **Remote** = kho ở nơi khác, ví dụ GitHub.
-* **Push** = đẩy thay đổi lên GitHub.
-* **Pull** = lấy thay đổi từ GitHub về.
-* **Clone** = sao chép Repository về máy.
-* **Branch** = nhánh phát triển.
-* **Merge** = hợp nhất các nhánh.
+```bash
+git log --oneline
+```
 
-## 5. Câu nhớ nhanh
+→ Xem lịch sử Commit ngắn gọn.
 
-> `init` → bắt đầu quản lý
-> `status` → xem trạng thái
-> `add` → đưa vào vùng chuẩn bị
-> `commit` → ghi nhận phiên bản
-> `push` → đẩy lên GitHub
-> `pull` → lấy về máy
+```bash
+git log
+```
 
-Học Git và GitHub - Day 0
+→ Xem thông tin Commit chi tiết.
+
+**HEAD** = vị trí hiện tại Git đang đứng.
+
+---
+
+## 6. `.gitignore`
+
+`.gitignore` = danh sách file Git bỏ qua.
+
+Ví dụ:
+
+```text
+*.exe
+```
+
+→ Git bỏ qua tất cả file `.exe`.
+
+```text
+main.cpp   → theo dõi ✅
+main.exe   → bỏ qua ❌
+```
+
+---
+
+## ⭐ 7. Công thức phải nhớ
+
+```text
+git init
+→ tạo Repository
+
+git status
+→ kiểm tra
+
+git add
+→ chuẩn bị
+
+git commit
+→ tạo phiên bản
+
+git push
+→ đưa lên GitHub
+
+git log
+→ xem lịch sử
+```
+
+> **Git không tự tạo phiên bản khi mình sửa file.
+> Phiên bản được tạo khi mình Commit.**
